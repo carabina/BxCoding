@@ -14,20 +14,14 @@
 
 import Foundation
 
-public final class JsonDecoder: FileDecoder {
-    
-    public let rawValue: Json
-    
-    public init(rawValue: Json) {
-        self.rawValue = rawValue
-    }
-}
+public typealias JsonEncoder = Encoder<Json>
+public typealias PlistEncoder = Encoder<Plist>
 
-public final class PlistDecoder: FileDecoder {
+public final class Encoder<Element: FileElement>: FileEncoder {
     
-    public let rawValue: Plist
+    public var rawValue: Element
     
-    public init(rawValue: Plist) {
+    public init(rawValue: Element) {
         self.rawValue = rawValue
     }
 }

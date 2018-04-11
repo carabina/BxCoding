@@ -12,25 +12,26 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Foundation
+import BxUtility
 
-/// This class is used to encode `FileCodable` objects as Json.
-/// When attributes are tried to encode, the class simply does
-/// nothing as Json doesn't support element attributes.
-public final class JsonEncoder: FileEncoder {
+public struct BxCodingFramework {
     
-    public var rawValue: Json
-    
-    public init(rawValue: Json) {
-        self.rawValue = rawValue
+    public enum Error: Swift.Error {
+        
+        case unknown(Swift.Error)
+        case unexpectedNull
+        case decodingFailed
     }
-}
-
-public final class PlistEncoder: FileEncoder {
     
-    public var rawValue: Plist
-    
-    public init(rawValue: Plist) {
-        self.rawValue = rawValue
+    internal enum InternalError: Swift.Error {
+        
+        case optionalEncodingFailed
+        #if DEBUG
+            case decodingFailed(type: Any.Type, keyPath: [FileCodingKey])
+        #endif
     }
+    
+    public static var logger: Logger? = {
+        return PrintingLogger(with: "BxCoding", logsTimestamp: true)
+    }()
 }

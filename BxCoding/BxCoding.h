@@ -12,22 +12,14 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Foundation
+#import <UIKit/UIKit.h>
 
-public enum MorphError: Error {
-    
-    case responseError(Data)
-    
-    case invalidDecoder
-    case invalidEncoder
-    case decodingFailed
-    
-    case anyIncompatibleValue
-}
+//! Project version number for BxCoding.
+FOUNDATION_EXPORT double BxCodingVersionNumber;
 
-internal enum MorphInternalError: Error {
-    
-    case optionalNone
-    case initialDecodingFailed
-    
-}
+//! Project version string for BxCoding.
+FOUNDATION_EXPORT const unsigned char BxCodingVersionString[];
+
+// In this header, you should import all the public headers of your framework using statements like #import <BxCoding/PublicHeader.h>
+
+

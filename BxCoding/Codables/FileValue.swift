@@ -51,7 +51,7 @@ public enum FileValue<Element: FileElement> {
         if let string = object as? String {
             self = .string(string)
         } else if let number = object as? NSNumber {
-            if number.isBool {
+            if CFGetTypeID(number) == CFBooleanGetTypeID() {
                 self = .boolean(number.boolValue)
             } else {
                 self = .number(number)

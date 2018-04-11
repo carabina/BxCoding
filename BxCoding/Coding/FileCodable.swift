@@ -13,7 +13,7 @@
 // limitations under the License.
 
 import Foundation
-import Horizon
+import BxUtility
 
 public typealias FileCodable = FileEncodable & FileDecodable
 

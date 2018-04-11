@@ -32,7 +32,7 @@ extension FileEncoder {
     ///
     /// - returns: The JSON value.
     public static func encode<T: FileEncodable>(_ object: T) throws -> Element {
-        let encoder = Self.init(rawValue: Element.init(value: .object([:])))
+        let encoder = Self.init(rawValue: Element.dictionary)
         try encoder.encode(object)
         return encoder.rawValue
     }
@@ -43,9 +43,9 @@ extension FileEncoder {
     public func encode<T: FileEncodable>(_ value: T) throws {
         do {
             try value.encode(to: self)
-        } catch MorphInternalError.optionalNone {
+        } catch BxCodingFramework.InternalError.optionalEncodingFailed {
             return
-        } catch let error {
+        } catch {
             throw error
         }
     }
@@ -61,10 +61,10 @@ extension FileEncoder {
     ///                    Otherwise, only the last value for the
     ///                    specified key is encoded.
     public func encode<T: FileEncodable>(_ value: T, for key: String) throws {
-        let encoder = Self.init(rawValue: Element.init(value: .object([:])))
+        let encoder = Self.init(rawValue: Element.dictionary)
         do {
             try value.encode(to: encoder)
-        } catch MorphInternalError.optionalNone {
+        } catch BxCodingFramework.InternalError.optionalEncodingFailed {
             return
         } catch let error {
             throw error

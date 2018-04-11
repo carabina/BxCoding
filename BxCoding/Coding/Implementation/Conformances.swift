@@ -13,6 +13,7 @@
 // limitations under the License.
 
 import Foundation
+import BxUtility
 
 extension Optional: FileDecodable where Wrapped: FileDecodable {
     
@@ -22,7 +23,7 @@ extension Optional: FileDecodable where Wrapped: FileDecodable {
         case .null:
             self = nil
         default:
-            self = try Decoder.decode(wrapped)
+            self = try? decoder.decode(to: Wrapped.self)
         }
     }
 }
@@ -34,7 +35,7 @@ extension Optional: FileEncodable where Wrapped: FileEncodable {
         case .some(let wrapped):
             try encoder.encode(wrapped)
         case .none:
-            throw MorphInternalError.optionalNone
+            throw BxCodingFramework.InternalError.optionalEncodingFailed
         }
     }
 }
@@ -43,29 +44,32 @@ extension Array: FileDecodable where Element: FileDecodable {
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
         guard let array = decoder.rawValue.arrayValue else {
-            throw MorphInternalError.initialDecodingFailed
+            #if DEBUG
+                throw BxCodingFramework.InternalError.decodingFailed(type: Array<Element>.self, keyPath: decoder.keyPath)
+            #else
+                throw BxCodingFramework.Error.decodingFailed
+            #endif
         }
-        self = try array.map { try Decoder.decode($0) }
+        self = try array.enumerated().map { try decoder.decode($0.element,
+                                                               for: FileCodingKey(integerLiteral: $0.offset)) }
     }
 }
 
 extension Array: FileEncodable where Element: FileEncodable {
     
     public func encode<Encoder: FileEncoder>(to encoder: Encoder) throws {
-        var result = [Encoder.Element]()
-        result.reserveCapacity(self.count)
-        for value in self {
+        let array = try self.compactMap { (value) -> Encoder.Element? in
             do {
-                let encoder = Encoder.init(rawValue: Encoder.Element.init(value: .object([:])))
+                let encoder = Encoder.init(rawValue: Encoder.Element.dictionary)
                 try encoder.encode(value)
-                result.append(encoder.rawValue)
-            } catch MorphInternalError.optionalNone {
-                continue
+                return encoder.rawValue
+            } catch BxCodingFramework.InternalError.optionalEncodingFailed {
+                return nil
             } catch {
                 throw error
             }
         }
-        encoder.rawValue = Encoder.Element.init(value: .array(result))
+        encoder.rawValue = Encoder.Element.init(value: .array(array))
     }
 }
 
@@ -73,9 +77,16 @@ extension Dictionary: FileDecodable where Key == String, Value: FileDecodable {
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
         guard let dictionary = decoder.rawValue.dictionaryValue else {
-            throw MorphInternalError.initialDecodingFailed
+            #if DEBUG
+                throw BxCodingFramework.InternalError.decodingFailed(type: Dictionary<Key, Value>.self, keyPath: decoder.keyPath)
+            #else
+                throw BxCodingFramework.Error.decodingFailed
+            #endif
         }
-        self = try dictionary.mapValues { try Decoder.decode($0) }
+        let mapping = try dictionary.map { ($0.key, try decoder.decode($0.value,
+                                                                       to: Value.self,
+                                                                       for: FileCodingKey(stringLiteral: $0.key))) }
+        self = Dictionary(uniqueKeysWithValues: mapping)
     }
 }
 
@@ -88,37 +99,14 @@ extension Dictionary: FileEncodable where Key == String, Value: FileEncodable {
     }
 }
 
-extension Json: FileCodable {
+extension FileElement {
     
     public func encode<Encoder: FileEncoder>(to encoder: Encoder) throws {
-        guard let coder = encoder as? JsonEncoder else {
-            throw MorphError.invalidEncoder
-        }
-        coder.rawValue = self
+        encoder.rawValue = Encoder.Element.init(converting: self)
     }
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
-        guard let coder = decoder as? JsonDecoder else {
-            throw MorphError.invalidDecoder
-        }
-        self = coder.rawValue
-    }
-}
-
-extension Plist: FileCodable {
-    
-    public func encode<Encoder: FileEncoder>(to encoder: Encoder) throws {
-        guard let coder = encoder as? PlistEncoder else {
-            throw MorphError.invalidEncoder
-        }
-        coder.rawValue = self
-    }
-    
-    public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
-        guard let coder = decoder as? PlistDecoder else {
-            throw MorphError.invalidDecoder
-        }
-        self = coder.rawValue
+        self = Self(converting: decoder.rawValue)
     }
 }
 
@@ -130,7 +118,11 @@ extension String: FileCodable {
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
         guard let string = decoder.rawValue.stringValue else {
-            throw MorphInternalError.initialDecodingFailed
+            #if DEBUG
+                throw BxCodingFramework.InternalError.decodingFailed(type: String.self, keyPath: decoder.keyPath)
+            #else
+                throw BxCodingFramework.Error.decodingFailed
+            #endif
         }
         self = string
     }
@@ -144,7 +136,11 @@ extension Int: FileCodable {
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
         guard let integer = decoder.rawValue.intValue else {
-            throw MorphInternalError.initialDecodingFailed
+            #if DEBUG
+                throw BxCodingFramework.InternalError.decodingFailed(type: Int.self, keyPath: decoder.keyPath)
+            #else
+                throw BxCodingFramework.Error.decodingFailed
+            #endif
         }
         self = integer
     }
@@ -158,7 +154,11 @@ extension Int64: FileCodable {
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
         guard let integer = decoder.rawValue.int64Value else {
-            throw MorphInternalError.initialDecodingFailed
+            #if DEBUG
+                throw BxCodingFramework.InternalError.decodingFailed(type: Int64.self, keyPath: decoder.keyPath)
+            #else
+                throw BxCodingFramework.Error.decodingFailed
+            #endif
         }
         self = integer
     }
@@ -172,7 +172,11 @@ extension Int32: FileCodable {
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
         guard let integer = decoder.rawValue.int32Value else {
-            throw MorphInternalError.initialDecodingFailed
+            #if DEBUG
+                throw BxCodingFramework.InternalError.decodingFailed(type: Int32.self, keyPath: decoder.keyPath)
+            #else
+                throw BxCodingFramework.Error.decodingFailed
+            #endif
         }
         self = integer
     }
@@ -186,7 +190,11 @@ extension Int16: FileCodable {
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
         guard let integer = decoder.rawValue.int16Value else {
-            throw MorphInternalError.initialDecodingFailed
+            #if DEBUG
+                throw BxCodingFramework.InternalError.decodingFailed(type: Int16.self, keyPath: decoder.keyPath)
+            #else
+                throw BxCodingFramework.Error.decodingFailed
+            #endif
         }
         self = integer
     }
@@ -200,7 +208,11 @@ extension UInt: FileCodable {
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
         guard let integer = decoder.rawValue.uintValue else {
-            throw MorphInternalError.initialDecodingFailed
+            #if DEBUG
+                throw BxCodingFramework.InternalError.decodingFailed(type: UInt.self, keyPath: decoder.keyPath)
+            #else
+                throw BxCodingFramework.Error.decodingFailed
+            #endif
         }
         self = integer
     }
@@ -214,7 +226,11 @@ extension UInt64: FileCodable {
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
         guard let integer = decoder.rawValue.uint64Value else {
-            throw MorphInternalError.initialDecodingFailed
+            #if DEBUG
+                throw BxCodingFramework.InternalError.decodingFailed(type: UInt64.self, keyPath: decoder.keyPath)
+            #else
+                throw BxCodingFramework.Error.decodingFailed
+            #endif
         }
         self = integer
     }
@@ -228,7 +244,11 @@ extension UInt32: FileCodable {
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
         guard let integer = decoder.rawValue.uint32Value else {
-            throw MorphInternalError.initialDecodingFailed
+            #if DEBUG
+                throw BxCodingFramework.InternalError.decodingFailed(type: UInt32.self, keyPath: decoder.keyPath)
+            #else
+                throw BxCodingFramework.Error.decodingFailed
+            #endif
         }
         self = integer
     }
@@ -242,7 +262,11 @@ extension UInt16: FileCodable {
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
         guard let integer = decoder.rawValue.uint16Value else {
-            throw MorphInternalError.initialDecodingFailed
+            #if DEBUG
+                throw BxCodingFramework.InternalError.decodingFailed(type: UInt16.self, keyPath: decoder.keyPath)
+            #else
+                throw BxCodingFramework.Error.decodingFailed
+            #endif
         }
         self = integer
     }
@@ -256,7 +280,11 @@ extension Double: FileCodable {
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
         guard let double = decoder.rawValue.doubleValue else {
-            throw MorphInternalError.initialDecodingFailed
+            #if DEBUG
+                throw BxCodingFramework.InternalError.decodingFailed(type: Double.self, keyPath: decoder.keyPath)
+            #else
+                throw BxCodingFramework.Error.decodingFailed
+            #endif
         }
         self = double
     }
@@ -270,7 +298,11 @@ extension Bool: FileCodable {
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
         guard let boolean = decoder.rawValue.boolValue else {
-            throw MorphInternalError.initialDecodingFailed
+            #if DEBUG
+                throw BxCodingFramework.InternalError.decodingFailed(type: Bool.self, keyPath: decoder.keyPath)
+            #else
+                throw BxCodingFramework.Error.decodingFailed
+            #endif
         }
         self = boolean
     }
@@ -283,6 +315,27 @@ extension UUID: FileCodable {
     }
     
     public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
-        self = try UUID(uuidString: try decoder.decode()).unwrap()
+        guard let initialized = try? decoder.decode() |> UUID.init(uuidString:),
+              let wrapped = initialized, let uuid = wrapped else {
+                #if DEBUG
+                    throw BxCodingFramework.InternalError.decodingFailed(type: UUID.self, keyPath: decoder.keyPath)
+                #else
+                    throw BxCodingFramework.Error.decodingFailed
+                #endif
+        }
+        self = uuid
     }
 }
+
+//extension Date: FileCodable {
+//    
+//    public func encode<Encoder: FileEncoder>(to encoder: Encoder) throws {
+//        try encoder.encode(self.uuidString)
+//    }
+//    
+//    public init<Decoder: FileDecoder>(from decoder: Decoder) throws {
+//        guard let string = try? decoder.decode(to: String.self) else {
+//            throw BxCodingFramework.InternalError.decodingFailed(type: Date.self)
+//        }
+//    }
+//}

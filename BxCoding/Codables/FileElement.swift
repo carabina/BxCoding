@@ -15,7 +15,7 @@
 import Foundation
 import BxUtility
 
-public protocol FileElement: CustomStringConvertible {
+public protocol FileElement: CustomStringConvertible, FileCodable {
     
     /// Initializes a `FileElement` with type `Any`. In fact, this is not really
     /// type `Any` but just used for internal simplicity and generic
@@ -50,7 +50,6 @@ public protocol FileElement: CustomStringConvertible {
     ///
     /// - returns: The description as `String`.
     func description(forOffset offset: String, prettyPrinted: Bool, truncatesStrings: Bool) -> String
-    
 }
 
 extension FileElement {
@@ -98,7 +97,7 @@ extension FileElement {
         case .object(let dictionary):
             return try dictionary.mapValues { try $0.anyValue() }
         case .null:
-            throw MorphError.anyIncompatibleValue
+            throw BxCodingFramework.Error.unexpectedNull
         }
     }
     
@@ -334,7 +333,7 @@ extension FileElement {
                 object[key] = newValue
                 value = .object(object)
             default:
-                print("Setting a property is only allowed on objects.")
+                return
             }
         }
     }
@@ -374,8 +373,7 @@ extension FileElement {
             switch value {
             case .array(var array):
                 guard array.indices.contains(index) ||
-                    array.count == index else {
-                        print("Index is out of range.")
+                      array.count == index else {
                         return
                 }
                 array[index] = newValue
@@ -387,8 +385,7 @@ extension FileElement {
                     fallthrough
                 }
             default:
-                print("Setting an index is not allowed on type undefined and" +
-                    "indices not equal 0 may only be used on arrays.")
+                return
             }
         }
     }
@@ -443,5 +440,25 @@ extension FileElement {
     /// A human readable description of `self`.
     public var description: String {
         return description(forOffset: "", prettyPrinted: true, truncatesStrings: true)
+    }
+}
+
+extension FileElement {
+    
+    public init<F: FileElement>(converting fileElement: F) {
+        switch fileElement.value {
+        case .null:
+            self.init(value: .null)
+        case .boolean(let bool):
+            self.init(value: .boolean(bool))
+        case .number(let number):
+            self.init(value: .number(number))
+        case .string(let string):
+            self.init(value: .string(string))
+        case .array(let elements):
+            self.init(value: .array(elements.map(Self.init(converting:))))
+        case .object(let entries):
+            self.init(value: .object(entries.mapValues(Self.init(converting:))))
+        }
     }
 }

@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-import Horizon
+import BxUtility
 
 /// The structure holds a JSON object. It may hold simple values
 /// that do not represent valid JSON (like strings, numbers, etc.)
@@ -149,9 +149,9 @@ public struct Json: FileElement {
     }
     
     private func description(forOffset offset: String = "",
-                            prettyPrinted: Bool = true,
-                            truncatesStrings: Bool = false,
-                            offsetsInitialValue: Bool) -> String {
+                             prettyPrinted: Bool = true,
+                             truncatesStrings: Bool = false,
+                             offsetsInitialValue: Bool) -> String {
         switch value {
         case .string(var string):
             string = string.replacingOccurrences(of: "\n", with: "\\n")

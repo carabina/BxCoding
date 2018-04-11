@@ -14,13 +14,22 @@
 
 import Foundation
 
-public let null = FileNull()
+public typealias JsonDecoder = Decoder<Json>
+public typealias PlistDecoder = Decoder<Plist>
 
-public struct FileNull: FileEncodable {
+public final class Decoder<Element: FileElement>: FileDecoder {
     
-    internal init() { }
+    public let rawValue: Element
+    #if DEBUG
+        public let keyPath: [FileCodingKey]
     
-    public func encode<Encoder: FileEncoder>(to encoder: Encoder) throws {
-        encoder.rawValue = Encoder.Element(value: .null)
-    }
+        public init(rawValue: Element, keyPath: [FileCodingKey]) {
+            self.rawValue = rawValue
+            self.keyPath = keyPath
+        }
+    #else
+        public init(rawValue: Element) {
+            self.rawValue = rawValue
+        }
+    #endif
 }

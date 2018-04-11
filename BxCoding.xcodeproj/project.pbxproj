@@ -7,14 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C984DD0920766595006687A5 /* BxUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C984DD0820766595006687A5 /* BxUtility.framework */; };
+		03AEB4CCB8D428E594C55183 /* libPods-BxCoding.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3FCE08DF7602E18E0DE0C1 /* libPods-BxCoding.a */; };
+		8D1BA270728C20C90F8D23B5 /* libPods-BxCodingTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F7CA91330F28BF4DFA3FC1CA /* libPods-BxCodingTests.a */; };
+		C902C0D82077B9AC007FA520 /* BxCoding.podspec in Resources */ = {isa = PBXBuildFile; fileRef = C902C0D72077B9AC007FA520 /* BxCoding.podspec */; };
+		C9050C8D2076E8B600314BD3 /* EncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9050C8C2076E8B600314BD3 /* EncodingTests.swift */; };
+		C91AC26F20766B7500DEF75B /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C91AC26D20766B7500DEF75B /* README.md */; };
+		C91AC27020766B7500DEF75B /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C91AC26E20766B7500DEF75B /* LICENSE */; };
+		C91AC27620766BB400DEF75B /* BxUtility.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C91AC27520766BB400DEF75B /* BxUtility.framework */; };
 		C9BA0ECD207644690051DC10 /* BxCoding.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9BA0EC3207644690051DC10 /* BxCoding.framework */; };
-		C9BA0ED2207644690051DC10 /* BxCodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0ED1207644690051DC10 /* BxCodingTests.swift */; };
+		C9BA0ED2207644690051DC10 /* DecodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0ED1207644690051DC10 /* DecodingTests.swift */; };
 		C9BA0ED4207644690051DC10 /* BxCoding.h in Headers */ = {isa = PBXBuildFile; fileRef = C9BA0EC6207644690051DC10 /* BxCoding.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C9BA0EDF2076447A0051DC10 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = C9BA0EDD2076447A0051DC10 /* README.md */; };
-		C9BA0EE02076447A0051DC10 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = C9BA0EDE2076447A0051DC10 /* LICENSE */; };
 		C9BA0EEB2076457B0051DC10 /* FileCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EE1207645790051DC10 /* FileCodable.swift */; };
-		C9BA0EEC2076457B0051DC10 /* DecodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EE2207645790051DC10 /* DecodingKey.swift */; };
+		C9BA0EEC2076457B0051DC10 /* FileCodingKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EE2207645790051DC10 /* FileCodingKey.swift */; };
 		C9BA0EED2076457B0051DC10 /* FileEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EE3207645790051DC10 /* FileEncoder.swift */; };
 		C9BA0EEE2076457B0051DC10 /* FileElement.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EE4207645790051DC10 /* FileElement.swift */; };
 		C9BA0EEF2076457B0051DC10 /* ObservableType+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EE52076457A0051DC10 /* ObservableType+Extension.swift */; };
@@ -22,11 +26,10 @@
 		C9BA0EF12076457B0051DC10 /* FileValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EE72076457A0051DC10 /* FileValue.swift */; };
 		C9BA0EF22076457B0051DC10 /* Json.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EE82076457A0051DC10 /* Json.swift */; };
 		C9BA0EF32076457B0051DC10 /* FileDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EE92076457A0051DC10 /* FileDecoder.swift */; };
-		C9BA0EF42076457B0051DC10 /* BxCoding+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EEA2076457B0051DC10 /* BxCoding+Error.swift */; };
-		C9BA0EF6207646E80051DC10 /* FileCodable+Conformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EF5207646E80051DC10 /* FileCodable+Conformance.swift */; };
-		C9BA0EF8207647280051DC10 /* FileDecoder+Conformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EF7207647280051DC10 /* FileDecoder+Conformance.swift */; };
-		C9BA0EFA207647380051DC10 /* FileEncoder+Conformance.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EF9207647380051DC10 /* FileEncoder+Conformance.swift */; };
-		C9BA0EFC207647750051DC10 /* FileNull.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EFB207647750051DC10 /* FileNull.swift */; };
+		C9BA0EF6207646E80051DC10 /* Conformances.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EF5207646E80051DC10 /* Conformances.swift */; };
+		C9BA0EF8207647280051DC10 /* Decoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EF7207647280051DC10 /* Decoder.swift */; };
+		C9BA0EFA207647380051DC10 /* Encoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9BA0EF9207647380051DC10 /* Encoder.swift */; };
+		C9D0EA3B2076829D00ED2CAD /* BxCoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9D0EA3A2076829D00ED2CAD /* BxCoding.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,17 +43,24 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A3FCE08DF7602E18E0DE0C1 /* libPods-BxCoding.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BxCoding.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7D2736E91A1B1FC9BE519257 /* Pods-BxCoding.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BxCoding.release.xcconfig"; path = "../Pods/Target Support Files/Pods-BxCoding/Pods-BxCoding.release.xcconfig"; sourceTree = "<group>"; };
+		907CC6632219E7E285E1AFC8 /* Pods-BxCodingTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BxCodingTests.release.xcconfig"; path = "../Pods/Target Support Files/Pods-BxCodingTests/Pods-BxCodingTests.release.xcconfig"; sourceTree = "<group>"; };
+		9673BE692C398CF90859AC0D /* Pods-BxCoding.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BxCoding.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-BxCoding/Pods-BxCoding.debug.xcconfig"; sourceTree = "<group>"; };
+		C902C0D72077B9AC007FA520 /* BxCoding.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = BxCoding.podspec; sourceTree = "<group>"; };
+		C9050C8C2076E8B600314BD3 /* EncodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodingTests.swift; sourceTree = "<group>"; };
+		C91AC26D20766B7500DEF75B /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		C91AC26E20766B7500DEF75B /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		C91AC27520766BB400DEF75B /* BxUtility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BxUtility.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C984DD0820766595006687A5 /* BxUtility.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = BxUtility.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BA0EC3207644690051DC10 /* BxCoding.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BxCoding.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9BA0EC6207644690051DC10 /* BxCoding.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BxCoding.h; sourceTree = "<group>"; };
 		C9BA0EC7207644690051DC10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C9BA0ECC207644690051DC10 /* BxCodingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BxCodingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C9BA0ED1207644690051DC10 /* BxCodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BxCodingTests.swift; sourceTree = "<group>"; };
+		C9BA0ED1207644690051DC10 /* DecodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodingTests.swift; sourceTree = "<group>"; };
 		C9BA0ED3207644690051DC10 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C9BA0EDD2076447A0051DC10 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		C9BA0EDE2076447A0051DC10 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		C9BA0EE1207645790051DC10 /* FileCodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCodable.swift; sourceTree = "<group>"; };
-		C9BA0EE2207645790051DC10 /* DecodingKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DecodingKey.swift; sourceTree = "<group>"; };
+		C9BA0EE2207645790051DC10 /* FileCodingKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileCodingKey.swift; sourceTree = "<group>"; };
 		C9BA0EE3207645790051DC10 /* FileEncoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileEncoder.swift; sourceTree = "<group>"; };
 		C9BA0EE4207645790051DC10 /* FileElement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileElement.swift; sourceTree = "<group>"; };
 		C9BA0EE52076457A0051DC10 /* ObservableType+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ObservableType+Extension.swift"; sourceTree = "<group>"; };
@@ -58,11 +68,12 @@
 		C9BA0EE72076457A0051DC10 /* FileValue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileValue.swift; sourceTree = "<group>"; };
 		C9BA0EE82076457A0051DC10 /* Json.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json.swift; sourceTree = "<group>"; };
 		C9BA0EE92076457A0051DC10 /* FileDecoder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileDecoder.swift; sourceTree = "<group>"; };
-		C9BA0EEA2076457B0051DC10 /* BxCoding+Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "BxCoding+Error.swift"; sourceTree = "<group>"; };
-		C9BA0EF5207646E80051DC10 /* FileCodable+Conformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileCodable+Conformance.swift"; sourceTree = "<group>"; };
-		C9BA0EF7207647280051DC10 /* FileDecoder+Conformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileDecoder+Conformance.swift"; sourceTree = "<group>"; };
-		C9BA0EF9207647380051DC10 /* FileEncoder+Conformance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileEncoder+Conformance.swift"; sourceTree = "<group>"; };
-		C9BA0EFB207647750051DC10 /* FileNull.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileNull.swift; sourceTree = "<group>"; };
+		C9BA0EF5207646E80051DC10 /* Conformances.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conformances.swift; sourceTree = "<group>"; };
+		C9BA0EF7207647280051DC10 /* Decoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Decoder.swift; sourceTree = "<group>"; };
+		C9BA0EF9207647380051DC10 /* Encoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encoder.swift; sourceTree = "<group>"; };
+		C9D0EA3A2076829D00ED2CAD /* BxCoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BxCoding.swift; sourceTree = "<group>"; };
+		E62844E82E93BBC66302BFFA /* Pods-BxCodingTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BxCodingTests.debug.xcconfig"; path = "../Pods/Target Support Files/Pods-BxCodingTests/Pods-BxCodingTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F7CA91330F28BF4DFA3FC1CA /* libPods-BxCodingTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BxCodingTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +81,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C984DD0920766595006687A5 /* BxUtility.framework in Frameworks */,
+				C91AC27620766BB400DEF75B /* BxUtility.framework in Frameworks */,
+				03AEB4CCB8D428E594C55183 /* libPods-BxCoding.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,16 +91,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				C9BA0ECD207644690051DC10 /* BxCoding.framework in Frameworks */,
+				8D1BA270728C20C90F8D23B5 /* libPods-BxCodingTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A183BAD3D93F2B3ABB44841 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9673BE692C398CF90859AC0D /* Pods-BxCoding.debug.xcconfig */,
+				7D2736E91A1B1FC9BE519257 /* Pods-BxCoding.release.xcconfig */,
+				E62844E82E93BBC66302BFFA /* Pods-BxCodingTests.debug.xcconfig */,
+				907CC6632219E7E285E1AFC8 /* Pods-BxCodingTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C984DD0720766595006687A5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C91AC27520766BB400DEF75B /* BxUtility.framework */,
 				C984DD0820766595006687A5 /* BxUtility.framework */,
+				5A3FCE08DF7602E18E0DE0C1 /* libPods-BxCoding.a */,
+				F7CA91330F28BF4DFA3FC1CA /* libPods-BxCodingTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -96,9 +123,8 @@
 		C984DD0A20766621006687A5 /* Coding */ = {
 			isa = PBXGroup;
 			children = (
-				C9BA0EE2207645790051DC10 /* DecodingKey.swift */,
+				C9BA0EE2207645790051DC10 /* FileCodingKey.swift */,
 				C9BA0EE1207645790051DC10 /* FileCodable.swift */,
-				C9BA0EFB207647750051DC10 /* FileNull.swift */,
 				C9BA0EE92076457A0051DC10 /* FileDecoder.swift */,
 				C9BA0EE3207645790051DC10 /* FileEncoder.swift */,
 				C984DD0C20766646006687A5 /* Implementation */,
@@ -119,9 +145,9 @@
 		C984DD0C20766646006687A5 /* Implementation */ = {
 			isa = PBXGroup;
 			children = (
-				C9BA0EF5207646E80051DC10 /* FileCodable+Conformance.swift */,
-				C9BA0EF7207647280051DC10 /* FileDecoder+Conformance.swift */,
-				C9BA0EF9207647380051DC10 /* FileEncoder+Conformance.swift */,
+				C9BA0EF5207646E80051DC10 /* Conformances.swift */,
+				C9BA0EF7207647280051DC10 /* Decoder.swift */,
+				C9BA0EF9207647380051DC10 /* Encoder.swift */,
 			);
 			path = Implementation;
 			sourceTree = "<group>";
@@ -138,12 +164,14 @@
 		C9BA0EB9207644690051DC10 = {
 			isa = PBXGroup;
 			children = (
-				C9BA0EDE2076447A0051DC10 /* LICENSE */,
-				C9BA0EDD2076447A0051DC10 /* README.md */,
+				C91AC26E20766B7500DEF75B /* LICENSE */,
+				C91AC26D20766B7500DEF75B /* README.md */,
+				C902C0D72077B9AC007FA520 /* BxCoding.podspec */,
 				C9BA0EC5207644690051DC10 /* BxCoding */,
 				C9BA0ED0207644690051DC10 /* BxCodingTests */,
 				C9BA0EC4207644690051DC10 /* Products */,
 				C984DD0720766595006687A5 /* Frameworks */,
+				8A183BAD3D93F2B3ABB44841 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,10 +188,10 @@
 			isa = PBXGroup;
 			children = (
 				C9BA0EC6207644690051DC10 /* BxCoding.h */,
-				C9BA0EEA2076457B0051DC10 /* BxCoding+Error.swift */,
+				C9D0EA3A2076829D00ED2CAD /* BxCoding.swift */,
 				C984DD0A20766621006687A5 /* Coding */,
 				C984DD0B20766631006687A5 /* Codables */,
-				C9BA0EE52076457A0051DC10 /* ObservableType+Extension.swift */,
+				C9D0EA3720766E8C00ED2CAD /* Rx */,
 				C9BA0EC7207644690051DC10 /* Info.plist */,
 			);
 			path = BxCoding;
@@ -172,10 +200,19 @@
 		C9BA0ED0207644690051DC10 /* BxCodingTests */ = {
 			isa = PBXGroup;
 			children = (
-				C9BA0ED1207644690051DC10 /* BxCodingTests.swift */,
+				C9BA0ED1207644690051DC10 /* DecodingTests.swift */,
+				C9050C8C2076E8B600314BD3 /* EncodingTests.swift */,
 				C9BA0ED3207644690051DC10 /* Info.plist */,
 			);
 			path = BxCodingTests;
+			sourceTree = "<group>";
+		};
+		C9D0EA3720766E8C00ED2CAD /* Rx */ = {
+			isa = PBXGroup;
+			children = (
+				C9BA0EE52076457A0051DC10 /* ObservableType+Extension.swift */,
+			);
+			path = Rx;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +233,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9BA0ED7207644690051DC10 /* Build configuration list for PBXNativeTarget "BxCoding" */;
 			buildPhases = (
+				45C9FE1032BF361D5924A16E /* [CP] Check Pods Manifest.lock */,
 				C9BA0EBE207644690051DC10 /* Sources */,
 				C9BA0EBF207644690051DC10 /* Frameworks */,
 				C9BA0EC0207644690051DC10 /* Headers */,
@@ -214,6 +252,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C9BA0EDA207644690051DC10 /* Build configuration list for PBXNativeTarget "BxCodingTests" */;
 			buildPhases = (
+				200D14AC791C8A9F05F8249F /* [CP] Check Pods Manifest.lock */,
 				C9BA0EC8207644690051DC10 /* Sources */,
 				C9BA0EC9207644690051DC10 /* Frameworks */,
 				C9BA0ECA207644690051DC10 /* Resources */,
@@ -270,8 +309,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9BA0EE02076447A0051DC10 /* LICENSE in Resources */,
-				C9BA0EDF2076447A0051DC10 /* README.md in Resources */,
+				C91AC27020766B7500DEF75B /* LICENSE in Resources */,
+				C91AC26F20766B7500DEF75B /* README.md in Resources */,
+				C902C0D82077B9AC007FA520 /* BxCoding.podspec in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,25 +324,63 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		200D14AC791C8A9F05F8249F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BxCodingTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		45C9FE1032BF361D5924A16E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BxCoding-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C9BA0EBE207644690051DC10 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				C9BA0EF02076457B0051DC10 /* Plist.swift in Sources */,
-				C9BA0EEC2076457B0051DC10 /* DecodingKey.swift in Sources */,
-				C9BA0EFC207647750051DC10 /* FileNull.swift in Sources */,
+				C9BA0EEC2076457B0051DC10 /* FileCodingKey.swift in Sources */,
 				C9BA0EF32076457B0051DC10 /* FileDecoder.swift in Sources */,
 				C9BA0EED2076457B0051DC10 /* FileEncoder.swift in Sources */,
-				C9BA0EF8207647280051DC10 /* FileDecoder+Conformance.swift in Sources */,
+				C9D0EA3B2076829D00ED2CAD /* BxCoding.swift in Sources */,
+				C9BA0EF8207647280051DC10 /* Decoder.swift in Sources */,
 				C9BA0EEE2076457B0051DC10 /* FileElement.swift in Sources */,
 				C9BA0EF12076457B0051DC10 /* FileValue.swift in Sources */,
-				C9BA0EFA207647380051DC10 /* FileEncoder+Conformance.swift in Sources */,
+				C9BA0EFA207647380051DC10 /* Encoder.swift in Sources */,
 				C9BA0EEF2076457B0051DC10 /* ObservableType+Extension.swift in Sources */,
 				C9BA0EEB2076457B0051DC10 /* FileCodable.swift in Sources */,
-				C9BA0EF6207646E80051DC10 /* FileCodable+Conformance.swift in Sources */,
+				C9BA0EF6207646E80051DC10 /* Conformances.swift in Sources */,
 				C9BA0EF22076457B0051DC10 /* Json.swift in Sources */,
-				C9BA0EF42076457B0051DC10 /* BxCoding+Error.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +388,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C9BA0ED2207644690051DC10 /* BxCodingTests.swift in Sources */,
+				C9050C8D2076E8B600314BD3 /* EncodingTests.swift in Sources */,
+				C9BA0ED2207644690051DC10 /* DecodingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -447,6 +526,7 @@
 		};
 		C9BA0ED8207644690051DC10 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9673BE692C398CF90859AC0D /* Pods-BxCoding.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -458,11 +538,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = BxCoding/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.borchero.BxCoding;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -474,6 +550,7 @@
 		};
 		C9BA0ED9207644690051DC10 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7D2736E91A1B1FC9BE519257 /* Pods-BxCoding.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -485,11 +562,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = BxCoding/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.borchero.BxCoding;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -500,16 +573,13 @@
 		};
 		C9BA0EDB207644690051DC10 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E62844E82E93BBC66302BFFA /* Pods-BxCodingTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7BEHQZ5DW9;
 				INFOPLIST_FILE = BxCodingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.borchero.BxCodingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -519,16 +589,13 @@
 		};
 		C9BA0EDC207644690051DC10 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 907CC6632219E7E285E1AFC8 /* Pods-BxCodingTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7BEHQZ5DW9;
 				INFOPLIST_FILE = BxCodingTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.borchero.BxCodingTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
